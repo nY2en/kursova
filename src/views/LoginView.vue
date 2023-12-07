@@ -49,18 +49,9 @@
 
 <script>
 export default {
-  computed: {
-    isLoggedIn() {
-      return this.$store.state.isLoggedIn;
-    },
-  },
-
   methods: {
-    async handleSubmit(data) {
-      await this.$store.dispatch("SignIn", data);
-      if (this.isLoggedIn) {
-        this.$router.push("/board");
-      }
+    handleSubmit(data) {
+      this.$store.dispatch("SignIn", data);
     },
   },
 };

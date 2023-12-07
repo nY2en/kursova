@@ -50,9 +50,8 @@
 <script>
 export default {
   methods: {
-    async handleSubmit(data) {
-      await this.$store.dispatch("SignUp", data);
-      this.$router.push("/board");
+    handleSubmit(data) {
+      this.$store.dispatch("SignUp", data);
     },
   },
 };

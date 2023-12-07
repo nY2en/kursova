@@ -58,7 +58,7 @@ export default {
         isLoggedIn: localStorage.getItem("isLoggedIn"),
       };
 
-      this.$store.dispatch("setLs", data);
+      this.$store.dispatch("setDataFromLs", data);
     }
 
     if (!this.isLoggedIn) {
@@ -106,7 +106,6 @@ export default {
 
     signOut() {
       this.$store.dispatch("SignOut");
-      this.$router.push("/signin");
     },
 
     handleMouseDown(e) {

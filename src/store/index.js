@@ -1,12 +1,11 @@
 import { createStore } from "vuex";
-
+import router from "@/router";
 import { initializeApp } from "firebase/app";
 import {
   getDocs,
   getDoc,
   collection,
   doc,
-  // deleteDoc,
   getFirestore,
   setDoc,
 } from "firebase/firestore";
@@ -19,13 +18,13 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyABgWLVznaisP8g3bnsM9Xb5h31nam8eCs",
-  authDomain: "web-notes-16ffd.firebaseapp.com",
-  projectId: "web-notes-16ffd",
-  storageBucket: "web-notes-16ffd.appspot.com",
-  messagingSenderId: "46492227454",
-  appId: "1:46492227454:web:c014ad7c6a5b21675e052f",
-  measurementId: "G-67FECBNGTK",
+  apiKey: "AIzaSyAVwde1z2dm5Uok9qriCB4xYYbayI4ogxE",
+  authDomain: "kursova-74eae.firebaseapp.com",
+  projectId: "kursova-74eae",
+  storageBucket: "kursova-74eae.appspot.com",
+  messagingSenderId: "33507490229",
+  appId: "1:33507490229:web:e9d3498ed139b3ae4901fc",
+  measurementId: "G-QLTLP4Z0QJ",
 };
 
 const APP = initializeApp(firebaseConfig);
@@ -62,7 +61,7 @@ export default createStore({
       state.isLoggedIn = data;
     },
 
-    setLs(state, data) {
+    setDataFromLs(state, data) {
       const { uid, isLoggedIn } = data;
 
       state.uid = uid;
@@ -106,42 +105,49 @@ export default createStore({
   },
 
   actions: {
-    async SignUp({ commit }, data) {
-      await createUserWithEmailAndPassword(AUTH, data.email, data.password)
+    SignUp({ commit }, data) {
+      createUserWithEmailAndPassword(AUTH, data.email, data.password)
         .then((data) => {
           commit("setUid", data.user.uid);
           commit("setIsLoggedIn", true);
 
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("uid", data.user.uid);
+
+          router.push("/board");
         })
         .catch((error) => {
           console.log(error);
         });
     },
 
-    async SignIn({ commit }, data) {
-      await signInWithEmailAndPassword(AUTH, data.email, data.password)
+    SignIn({ commit }, data) {
+      signInWithEmailAndPassword(AUTH, data.email, data.password)
         .then((data) => {
           commit("setUid", data.user.uid);
           commit("setIsLoggedIn", true);
 
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("uid", data.user.uid);
+
+          router.push("/board");
         })
         .catch((error) => {
+          alert("incorrect Email or Password");
           console.log(error);
         });
     },
 
-    async SignOut({ state }) {
-      await signOut(AUTH);
+    SignOut({ state }) {
+      signOut(AUTH);
       state.uid = null;
       state.isLoggedIn = null;
       state.categories = [];
       state.board.notes = [];
       localStorage.removeItem("uid");
       localStorage.removeItem("isLoggedIn");
+
+      router.push("/signin");
     },
 
     fetchCategories({ commit, state }) {
@@ -158,8 +164,8 @@ export default createStore({
       );
     },
 
-    setLs({ commit }, data) {
-      commit("setLs", data);
+    setDataFromLs({ commit }, data) {
+      commit("setDataFromLs", data);
     },
 
     addNote({ commit, state }, data) {

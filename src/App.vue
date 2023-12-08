@@ -18,7 +18,7 @@ export default {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Kalam, sans-serif;
 }
 
 ul {

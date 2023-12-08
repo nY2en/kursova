@@ -4,9 +4,9 @@
 
 <script>
 export default {
-  // created() {
-  //   this.$router.push("/signin");
-  // },
+  created() {
+    this.$router.push("/signin");
+  },
 };
 </script>
 

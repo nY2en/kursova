@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import router from "@/router";
+import { Notify } from "notiflix";
 import { initializeApp } from "firebase/app";
 import {
   getDocs,
@@ -110,7 +111,6 @@ export default createStore({
         .then((data) => {
           commit("setUid", data.user.uid);
           commit("setIsLoggedIn", true);
-
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("uid", data.user.uid);
 
@@ -118,6 +118,7 @@ export default createStore({
         })
         .catch((error) => {
           console.log(error);
+          Notify.failure("This email is already in use");
         });
     },
 
@@ -133,21 +134,22 @@ export default createStore({
           router.push("/board");
         })
         .catch((error) => {
-          alert("incorrect Email or Password");
+          Notify.failure("Incorrect Email or Password");
           console.log(error);
         });
     },
 
     SignOut({ state }) {
-      signOut(AUTH);
-      state.uid = null;
-      state.isLoggedIn = null;
-      state.categories = [];
-      state.board.notes = [];
-      localStorage.removeItem("uid");
-      localStorage.removeItem("isLoggedIn");
+      signOut(AUTH).then(() => {
+        state.uid = null;
+        state.isLoggedIn = null;
+        state.categories = [];
+        state.board.notes = [];
+        localStorage.removeItem("uid");
+        localStorage.removeItem("isLoggedIn");
 
-      router.push("/signin");
+        router.push("/signin");
+      });
     },
 
     fetchCategories({ commit, state }) {

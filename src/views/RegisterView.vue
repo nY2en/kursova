@@ -1,50 +1,40 @@
 <template>
-  <FormKit
-    type="form"
-    :value="{
-      email: '',
-      password: '',
-    }"
-    submit-label="Submit"
-    style="width: 400px; margin: 300px auto"
-    @submit="handleSubmit"
-  >
-    <p style="text-align: center; margin-bottom: 10px; font-size: 20px">
-      Registration
-    </p>
-
+  <div>
     <FormKit
-      type="email"
-      name="email"
-      help="Please enter your email address."
-      validation="required|email|ends_with:.com"
-      validation-visibility="dirty"
-      placeholder="Email"
-    />
-
-    <FormKit
-      type="text"
-      name="password"
-      help="Please enter password address."
-      validation="required"
-      validation-visibility="dirty"
-      placeholder="Password"
-    />
-
-    <p
-      style="
-        text-align: center;
-        color: grey;
-        margin-bottom: 10px;
-        font-size: 14px;
-      "
+      type="form"
+      :value="{
+        email: '',
+        password: '',
+      }"
+      submit-label="Submit"
+      @submit="handleSubmit"
     >
-      Already have an account?
-      <RouterLink style="text-decoration: none; color: slateblue" to="/signin"
-        >Sign In</RouterLink
-      >
-    </p>
-  </FormKit>
+      <p>Registration</p>
+
+      <FormKit
+        type="email"
+        name="email"
+        help="Please enter your email address."
+        validation="required|email|ends_with:.com"
+        validation-visibility="blur"
+        placeholder="Email"
+      />
+
+      <FormKit
+        type="text"
+        name="password"
+        help="Please enter password address."
+        validation="required"
+        validation-visibility="blur"
+        placeholder="Password"
+      />
+
+      <p>
+        Already have an account?
+        <RouterLink to="/signin">Sign In</RouterLink>
+      </p>
+    </FormKit>
+  </div>
 </template>
 
 <script>

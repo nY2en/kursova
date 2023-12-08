@@ -26,9 +26,4 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.name !== "Login" && from.path === "/") next({ name: "Login" });
-  else next();
-});
-
 export default router;

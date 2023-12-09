@@ -1,5 +1,7 @@
 <template>
-  <div class="area"><LoginForm /></div>
+  <div class="area">
+    <LoginForm />
+  </div>
 </template>
 
 <script>

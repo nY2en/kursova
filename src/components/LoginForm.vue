@@ -35,7 +35,6 @@
       <label
         ><p class="form-label">Password</p>
         <FormKit
-          aria-autocomplete="false"
           inner-class="form-inner"
           input-class="form-input"
           :classes="{
@@ -44,11 +43,16 @@
             },
             input: { $reset: true },
             outer: { $reset: true },
+            suffixIcon: { $reset: true },
+            icon: { $reset: true },
           }"
-          type="text"
+          icon-class="form-icon"
+          type="password"
           name="password"
           validation="required"
           validation-visibility="none"
+          suffix-icon="eyeClosed"
+          @suffix-icon-click="handleIconClick"
       /></label>
     </FormKit>
 
@@ -64,6 +68,12 @@ export default {
   methods: {
     handleSubmit(data) {
       this.$store.dispatch("SignIn", data);
+    },
+    // мое
+    handleIconClick(node) {
+      node.props.suffixIcon =
+        node.props.suffixIcon === "eye" ? "eyeClosed" : "eye";
+      node.props.type = node.props.type === "password" ? "text" : "password";
     },
   },
 };

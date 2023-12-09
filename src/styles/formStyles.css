@@ -1,4 +1,5 @@
 .form-wrapper {
+  position: relative;
   width: 500px;
   height: 436px;
   margin: 200px auto;
@@ -60,5 +61,14 @@
 
 .link:hover,
 .link:focus {
-  color: teal;
+  color: #006ff9;
+}
+
+.form-icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 60%;
+  right: 10%;
 }

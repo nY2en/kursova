@@ -24,4 +24,8 @@ body {
 ul {
   list-style: none;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
 </style>

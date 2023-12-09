@@ -1,54 +1,16 @@
 <template>
-  <div>
-    <FormKit
-      type="form"
-      :value="{
-        email: '',
-        password: '',
-      }"
-      submit-label="Submit"
-      @submit="handleSubmit"
-    >
-      <p>Registration</p>
-
-      <FormKit
-        type="email"
-        name="email"
-        help="Please enter your email address."
-        validation="required|email|ends_with:.com"
-        validation-visibility="blur"
-        placeholder="Email"
-      />
-
-      <FormKit
-        type="text"
-        name="password"
-        help="Please enter password address."
-        validation="required"
-        validation-visibility="blur"
-        placeholder="Password"
-      />
-
-      <p>
-        Already have an account?
-        <RouterLink to="/signin">Sign In</RouterLink>
-      </p>
-    </FormKit>
+  <div class="area">
+    <RegisterForm />
   </div>
 </template>
 
 <script>
+import RegisterForm from "@/components/RegisterForm.vue";
 export default {
-  methods: {
-    handleSubmit(data) {
-      this.$store.dispatch("SignUp", data);
-    },
-  },
+  components: { RegisterForm },
 };
 </script>
 
 <style>
-.formkit-wrapper {
-  text-align: center;
-}
+@import "../styles/background.css";
 </style>

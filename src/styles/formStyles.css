@@ -38,10 +38,6 @@
   transition: color 250ms linear;
   background-color: transparent;
 }
-/* 
-.form-input:focus-within {
-  border-bottom-color: teal;
-} */
 
 .form-input::placeholder {
   color: black;
@@ -71,4 +67,5 @@
   position: absolute;
   top: 60%;
   right: 10%;
+  color: black;
 }

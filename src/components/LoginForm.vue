@@ -69,7 +69,7 @@ export default {
     handleSubmit(data) {
       this.$store.dispatch("SignIn", data);
     },
-    // мое
+
     handleIconClick(node) {
       node.props.suffixIcon =
         node.props.suffixIcon === "eye" ? "eyeClosed" : "eye";

@@ -3,44 +3,52 @@
   width: 500px;
   height: 436px;
   margin: 200px auto;
+  padding: 20px 50px;
+
   text-align: center;
 
-  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 25px;
-  padding: 20px 50px;
   border-radius: 15px;
+
+  background-color: rgba(255, 255, 255, 0.2);
+
   overflow: auto;
 }
 
 .title {
+  margin-bottom: 32px;
+
   font-size: 32px;
   font-weight: 400;
+
   color: #000;
-  margin-bottom: 32px;
 }
 
 .form-label {
-  text-align: start;
   font-size: 24px;
+  text-align: start;
+
   color: #000;
 }
 
 .form-input {
   width: 100%;
-  background-color: transparent;
+  margin-bottom: 32px;
+  padding: 8px 0;
+
+  font-size: 20px;
+
   border: none;
   outline: none;
   border-bottom: 2px solid #fff;
-  margin-bottom: 32px;
-  padding: 8px 0;
-  font-size: 20px;
+
+  background-color: transparent;
 
   transition: color 250ms linear;
-  background-color: transparent;
-}
 
-.form-input::placeholder {
-  color: black;
+  &::placeholder {
+    color: black;
+  }
 }
 
 .link-wrapper {
@@ -48,24 +56,47 @@
 }
 
 .link {
-  color: black;
-  text-decoration: none;
   font-weight: 700;
+  text-decoration: none;
+
+  color: black;
 
   transition: 250ms color linear;
 }
 
 .link:hover,
 .link:focus {
-  color: #006ff9;
+  color: teal;
 }
 
 .form-icon {
-  display: block;
-  width: 26px;
-  height: 26px;
   position: absolute;
   top: 60%;
   right: 10%;
+
+  display: block;
+  width: 26px;
+  height: 26px;
+
   color: black;
+}
+
+.form-icon:hover {
+  color: teal;
+}
+
+button.formkit-input {
+  padding: 10px 30px !important;
+
+  font-family: Kalam, sans-serif;
+  font-size: 16px !important;
+
+  background: rgba(0, 0, 0, 0.3) !important;
+
+  transition: background 250ms linear !important;
+}
+
+button.formkit-input:hover,
+button.formkit-input:focus {
+  background: rgba(0, 0, 0, 0.5) !important;
 }

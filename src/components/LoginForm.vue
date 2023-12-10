@@ -7,8 +7,6 @@
         email: '',
         password: '',
       }"
-      inner-class="form-inner"
-      submit-label="Submit"
       @submit="handleSubmit"
     >
       <h1 class="title">Welcome Back</h1>

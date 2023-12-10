@@ -1,4 +1,4 @@
-.form-wrapper {
+.form-main-wrapper {
   position: relative;
   width: 500px;
   height: 436px;
@@ -15,7 +15,7 @@
   overflow: auto;
 }
 
-.title {
+.form-main-title {
   margin-bottom: 32px;
 
   font-size: 32px;
@@ -24,14 +24,14 @@
   color: #000;
 }
 
-.form-label {
+.form-main-label {
   font-size: 24px;
   text-align: start;
 
   color: #000;
 }
 
-.form-input {
+.form-main-input {
   width: 100%;
   margin-bottom: 32px;
   padding: 8px 0;
@@ -47,15 +47,15 @@
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form-input:focus-within {
+.form-main-input:focus-within {
   border-color: teal;
 }
 
-.form-link-wrapper {
+.form-main-link-wrapper {
   color: #000;
 }
 
-.form-link {
+.form-main-link {
   font-weight: 700;
   text-decoration: none;
 
@@ -64,12 +64,12 @@
   transition: 250ms color cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form-link:hover,
-.form-link:focus {
+.form-main-link:hover,
+.form-main-link:focus {
   color: teal;
 }
 
-.form-icon {
+.form-main-icon {
   position: absolute;
   top: 60%;
   right: 10%;
@@ -83,7 +83,7 @@
   transition: 250ms color cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form-icon:hover {
+.form-main-icon:hover {
   color: teal;
 }
 

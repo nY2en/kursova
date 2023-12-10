@@ -1,27 +1,6 @@
 <template>
   <div>
-    <form>
-      <ul>
-        <li v-for="categorie in categories" :key="categorie.id">
-          <input
-            type="checkbox"
-            :id="categorie.id"
-            :value="categorie.id"
-            @change="handleCategoriesChange"
-            :name="categorie.type"
-            style="display: none"
-          />
-          <label
-            :class="
-              checkedCategories.includes(categorie.id) ? 'check' : 'uncheck'
-            "
-            :for="categorie.id"
-            >{{ categorie.type }}</label
-          >
-        </li>
-      </ul>
-    </form>
-
+    <CategoriesFilter />
     <NoteCard
       v-for="(note, index) in filteredNotes"
       :key="note.id"
@@ -36,6 +15,7 @@
 
 <script>
 import NoteCard from "@/components/NoteCard.vue";
+import CategoriesFilter from "@/components/CategoriesFilter.vue";
 
 export default {
   created() {
@@ -57,7 +37,7 @@ export default {
     this.$store.dispatch("fetchCategories");
   },
 
-  components: { NoteCard },
+  components: { NoteCard, CategoriesFilter },
 
   computed: {
     uid() {
@@ -70,14 +50,6 @@ export default {
 
     filteredNotes() {
       return this.$store.getters.filteredNotes;
-    },
-
-    categories() {
-      return this.$store.getters.categories;
-    },
-
-    checkedCategories() {
-      return this.$store.getters.checkedCategories;
     },
   },
 
@@ -95,12 +67,6 @@ export default {
 
     signOut() {
       this.$store.dispatch("SignOut");
-    },
-
-    handleCategoriesChange(e) {
-      if (e.target.checked) {
-        this.$store.dispatch("checkCategorie", Number(e.target.value));
-      } else this.$store.dispatch("unCheckCategorie", Number(e.target.value));
     },
   },
 };
@@ -139,13 +105,5 @@ export default {
 .bottom {
   bottom: 1%;
   right: 1%;
-}
-
-.check {
-  color: purple;
-}
-
-.unchek {
-  color: #fff;
 }
 </style>

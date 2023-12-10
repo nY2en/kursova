@@ -3,9 +3,9 @@
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -24,6 +24,7 @@ ul {
   background-repeat: no-repeat;
   background-size: cover;
 
-  overflow: hidden;
   color: white;
+
+  overflow: hidden;
 }

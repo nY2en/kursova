@@ -1,5 +1,5 @@
 <template>
-  <div class="form-wrapper">
+  <div class="form-main-wrapper">
     <FormKit
       autocomplete="off"
       type="form"
@@ -7,17 +7,15 @@
         email: '',
         password: '',
       }"
-      inner-class="form-inner"
       submit-label="Submit"
       @submit="handleSubmit"
     >
-      <h1 class="title">Create an account</h1>
+      <h1 class="form-main-title">Create an account</h1>
 
       <label
-        ><p class="form-label">Email</p>
+        ><p class="form-main-label">Email</p>
         <FormKit
-          inner-class="form-inner"
-          input-class="form-input"
+          input-class="form-main-input"
           :classes="{
             inner: {
               $reset: true,
@@ -33,11 +31,10 @@
       </label>
 
       <label>
-        <p class="form-label">Password</p>
+        <p class="form-main-label">Password</p>
         <FormKit
           aria-autocomplete="false"
-          inner-class="form-inner"
-          input-class="form-input"
+          input-class="form-main-input"
           :classes="{
             inner: {
               $reset: true,
@@ -52,9 +49,9 @@
       /></label>
     </FormKit>
 
-    <p class="form-link-wrapper">
+    <p class="form-main-link-wrapper">
       Already have an account?
-      <RouterLink class="form-link" to="/signin">Sign In</RouterLink>
+      <RouterLink class="form-main-link" to="/signin">Sign In</RouterLink>
     </p>
   </div>
 </template>

@@ -13,8 +13,8 @@
     >
       <h1 class="title">Welcome Back</h1>
 
-      <label
-        ><p class="form-label">Email</p>
+      <label>
+        <p class="form-label">Email</p>
         <FormKit
           inner-class="form-inner"
           input-class="form-input"

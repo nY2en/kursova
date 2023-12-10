@@ -32,8 +32,8 @@
         />
       </label>
 
-      <label
-        ><p class="form-label">Password</p>
+      <label>
+        <p class="form-label">Password</p>
         <FormKit
           aria-autocomplete="false"
           inner-class="form-inner"

@@ -1,5 +1,5 @@
 <template>
-  <div class="area">
+  <div>
     <LoginForm />
   </div>
 </template>
@@ -10,7 +10,3 @@ export default {
   components: { LoginForm },
 };
 </script>
-
-<style>
-@import "../styles/background.css";
-</style>

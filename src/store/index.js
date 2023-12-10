@@ -46,10 +46,26 @@ export default createStore({
     filteredNotes(state) {
       return state.board.notes.filter((el) => {
         if (state.checkedCategories.length > 0) {
-          return state.checkedCategories.includes(String(el.categorie));
+          return state.checkedCategories.includes(el.categorie);
         }
         return state.board.notes;
       });
+    },
+
+    categories(state) {
+      return state.categories;
+    },
+
+    checkedCategories(state) {
+      return state.checkedCategories;
+    },
+
+    isLoggedIn(state) {
+      return state.isLoggedIn;
+    },
+
+    uid(state) {
+      return state.uid;
     },
   },
 
@@ -81,7 +97,7 @@ export default createStore({
       state.board.notes.push(data);
     },
 
-    addCategories(state, data) {
+    setCategories(state, data) {
       state.categories.push(data);
     },
 
@@ -155,7 +171,7 @@ export default createStore({
     fetchCategories({ commit, state }) {
       state.categories = [];
       getDocs(collection(DB, "Categories")).then((res) =>
-        res.forEach((el) => commit("addCategories", el.data()))
+        res.forEach((el) => commit("setCategories", el.data()))
       );
     },
 

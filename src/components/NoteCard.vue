@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="note"
-    :style="{ top: note.coords.y + 'px', left: note.coords.x + 'px' }"
-  >
+  <div class="note">
     <div class="hud">
       <select @change="handleSelectChange">
         <option
@@ -62,10 +59,6 @@ export default {
 
 <style scoped>
 .note {
-  position: absolute;
-  top: 0;
-  left: 0;
-
   width: 350px;
   height: 150px;
 

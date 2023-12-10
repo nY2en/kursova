@@ -1,5 +1,5 @@
 <template>
-  <div class="area">
+  <div>
     <RegisterForm />
   </div>
 </template>
@@ -10,7 +10,3 @@ export default {
   components: { RegisterForm },
 };
 </script>
-
-<style>
-@import "../styles/background.css";
-</style>

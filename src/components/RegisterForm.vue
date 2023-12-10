@@ -52,9 +52,9 @@
       /></label>
     </FormKit>
 
-    <p class="link-wrapper">
-      Already have an account
-      <RouterLink class="link" to="/signin">Sign In</RouterLink>
+    <p class="form-link-wrapper">
+      Already have an account?
+      <RouterLink class="form-link" to="/signin">Sign In</RouterLink>
     </p>
   </div>
 </template>
@@ -63,7 +63,7 @@
 export default {
   methods: {
     handleSubmit(data) {
-      this.$store.dispatch("SignIn", data);
+      this.$store.dispatch("SignUp", data);
     },
   },
 };

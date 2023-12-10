@@ -54,9 +54,9 @@
       /></label>
     </FormKit>
 
-    <p class="link-wrapper">
+    <p class="form-link-wrapper">
       Do not have an account?
-      <RouterLink class="link" to="/signup">Register</RouterLink>
+      <RouterLink class="form-link" to="/signup">Register</RouterLink>
     </p>
   </div>
 </template>

@@ -51,11 +51,11 @@
   border-color: teal;
 }
 
-.link-wrapper {
+.form-link-wrapper {
   color: #000;
 }
 
-.link {
+.form-link {
   font-weight: 700;
   text-decoration: none;
 
@@ -64,8 +64,8 @@
   transition: 250ms color cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.link:hover,
-.link:focus {
+.form-link:hover,
+.form-link:focus {
   color: teal;
 }
 

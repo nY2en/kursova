@@ -1,19 +1,30 @@
 <template>
-  <div class="home-area">
-    <CategoriesFilter />
+  <div class="page-wrapper">
+    <form class="form-categories">
+      <h1 class="form-categories-title">Categories</h1>
 
-    <TaskList />
-    <button class="btn" @click="addNote">Add note</button>
-    <button class="btn" @click="signOut">Sign Out</button>
+      <CategoriesList />
+
+      <button type="button" class="form-categories-add-categorie">
+        add categorie
+      </button>
+    </form>
+
+    <div class="task-wrapper">
+      <TaskList />
+    </div>
+
+    <!-- <button class="btn" @click="addNote">Add note</button>
+    <button class="btn" @click="signOut">Sign Out</button> -->
   </div>
 </template>
 
 <script>
 import TaskList from "@/components/TaskList.vue";
-import CategoriesFilter from "@/components/CategoriesFilter.vue";
+import CategoriesList from "@/components/CategoriesList.vue";
 
 export default {
-  components: { TaskList, CategoriesFilter },
+  components: { TaskList, CategoriesList },
 
   created() {
     if (localStorage.getItem("uid") && localStorage.getItem("isLoggedIn")) {
@@ -64,10 +75,12 @@ export default {
 </script>
 
 <style scoped>
-.home-area {
+@import "../styles/categories.css";
+.page-wrapper {
   display: flex;
   padding: 80px;
 }
+
 .btn {
   align-self: center;
   padding: 10px 30px;

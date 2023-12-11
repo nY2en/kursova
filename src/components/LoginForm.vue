@@ -76,5 +76,5 @@ export default {
 </script>
 
 <style>
-@import "../styles/formStyles.css";
+@import "../styles/form.css";
 </style>

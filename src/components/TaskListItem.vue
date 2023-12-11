@@ -1,24 +1,23 @@
 <template>
-  <div class="note">
-    <div class="hud">
-      <select @change="handleSelectChange">
-        <option
-          v-for="categorie in categories"
-          :key="categorie.id"
-          :value="categorie.id"
-          :selected="categorie.id === note.categorie"
-        >
-          {{ categorie.type }}
-        </option>
-      </select>
-      <button class="btn" @click="deleteNote(note)">X</button>
-    </div>
+  <div>
     <textarea
-      class="textarea"
       :value="note.text"
       @input="handleTextAreaChange"
       placeholder="Type sth..."
     ></textarea>
+
+    <select @change="handleSelectChange">
+      <option
+        v-for="categorie in categories"
+        :key="categorie.id"
+        :value="categorie.id"
+        :selected="categorie.id === note.categorie"
+      >
+        {{ categorie.type }}
+      </option>
+    </select>
+
+    <button @click="deleteNote(note)">X</button>
   </div>
 </template>
 
@@ -57,56 +56,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.note {
-  width: 350px;
-  height: 150px;
-
-  border-radius: 15px;
-
-  background-color: #fff;
-
-  overflow: hidden;
-}
-
-.hud {
-  width: 100%;
-  height: 30px;
-  padding: 0 8px;
-
-  cursor: pointer;
-
-  background-color: #fa8072;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.textarea {
-  width: 100%;
-  height: 100px;
-  padding: 8px;
-
-  resize: none;
-
-  font-size: 16px;
-
-  outline: none;
-  border: none;
-  background-color: transparent;
-  color: #000;
-}
-
-.btn {
-  background-color: skyblue;
-  width: 18px;
-  height: 18px;
-  border: none;
-  border-radius: 15px;
-
-  font-size: 11px;
-
-  cursor: pointer;
-}
-</style>
+<style \></style>

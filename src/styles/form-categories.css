@@ -6,8 +6,6 @@
   background-color: rgba(255, 255, 255, 0.2);
 
   border-radius: 15px;
-
-  overflow: auto;
 }
 
 .form-categories-title {
@@ -17,6 +15,9 @@
 
 .form-categories-list {
   margin-bottom: 16px;
+
+  max-height: 620px;
+  overflow: auto;
 }
 
 .form-categories-item {

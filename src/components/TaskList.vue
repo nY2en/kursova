@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="task-list">
     <TaskListItem v-for="task in filteredTasks" :key="task.id" :note="task" />
   </ul>
 </template>

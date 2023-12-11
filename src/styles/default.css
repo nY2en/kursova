@@ -17,14 +17,17 @@ ul {
 }
 
 .area {
+  color: white;
+  width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.area-wrapper {
   width: 100%;
   height: 100vh;
 
   background-image: url("../assets/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-
-  color: white;
-
-  overflow: hidden;
 }

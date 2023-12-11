@@ -6,16 +6,17 @@
       <CategoriesList />
 
       <button type="button" class="form-categories-add-categorie">
-        add categorie
+        Add Categorie
       </button>
     </form>
 
     <div class="task-wrapper">
+      <h1 style="font-size: 44px; text-align: center">Tasks</h1>
+      <button class="btn" @click="addNote">Add note</button>
       <TaskList />
     </div>
 
-    <!-- <button class="btn" @click="addNote">Add note</button>
-    <button class="btn" @click="signOut">Sign Out</button> -->
+    <!-- <button class="btn" @click="signOut">Sign Out</button> -->
   </div>
 </template>
 
@@ -78,12 +79,34 @@ export default {
 @import "../styles/form-categories.css";
 .page-wrapper {
   display: flex;
-  padding: 80px;
+
+  padding: 80px 0;
+
+  justify-content: space-between;
+}
+
+.task-wrapper {
+  align-self: flex-start;
+  padding: 20px 40px;
+
+  border-radius: 12px;
+
+  width: 1000px;
+
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.task-list {
+  overflow: auto;
+  max-height: 700px;
 }
 
 .btn {
   align-self: center;
   padding: 10px 30px;
+  width: 100%;
+
+  margin-bottom: 16px;
 
   font-family: Kalam, sans-serif;
   font-size: 16px;

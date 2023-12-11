@@ -1,6 +1,8 @@
 <template>
-  <div class="area">
-    <router-view />
+  <div class="area-wrapper">
+    <div class="area">
+      <router-view />
+    </div>
   </div>
 </template>
 

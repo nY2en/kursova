@@ -1,0 +1,85 @@
+.task-wrapper {
+  align-self: flex-start;
+  width: 1000px;
+  padding: 20px 40px;
+
+  border-radius: 15px;
+
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.task-title {
+  margin-bottom: 16px;
+
+  font-size: 44px;
+  text-align: center;
+}
+
+.task-list {
+  max-height: 620px;
+  margin-bottom: 16px;
+
+  overflow: auto;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+
+  border-radius: 15px;
+
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.task-item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.task-textarea {
+  resize: none;
+  width: 700px;
+  height: 30px;
+  padding: 4px 12px;
+
+  font-size: 16px;
+
+  border: none;
+  outline: none;
+
+  background-color: transparent;
+}
+
+.task-select {
+  align-self: center;
+
+  border: none;
+  outline: none;
+
+  background-color: transparent;
+}
+
+.task-btn {
+  align-self: center;
+
+  width: 20px;
+  height: 20px;
+
+  border: none;
+
+  background-color: transparent;
+}
+
+.task-btn:hover .task-icon,
+.task-btn:focus .task-icon {
+  fill: rgba(0, 0, 0, 0.8);
+}
+
+.task-icon {
+  width: 100%;
+  height: 100%;
+
+  fill: rgba(0, 0, 0, 0.5);
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,12 +1,17 @@
 <template>
-  <li>
+  <li class="task-item">
     <textarea
+      class="task-textarea"
       :value="task.text"
       @input="handleTextAreaChange"
       placeholder="Type sth..."
     ></textarea>
 
-    <select @change="handleSelectChange" v-if="categories.length > 0">
+    <select
+      v-if="categories.length > 0"
+      @change="handleSelectChange"
+      class="task-select"
+    >
       <option
         v-for="categorie in categories"
         :key="categorie.id"
@@ -17,7 +22,11 @@
       </option>
     </select>
 
-    <button @click="handleBtnDeleteClick(task)">X</button>
+    <button @click="handleBtnDeleteClick(task)" class="task-btn">
+      <svg class="task-icon">
+        <use href="../assets/symbol-defs.svg#icon-bin"></use>
+      </svg>
+    </button>
   </li>
 </template>
 

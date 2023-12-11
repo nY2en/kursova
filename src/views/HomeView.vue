@@ -94,36 +94,16 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import "../styles/form-categories.css";
+@import "../styles/task-list.css";
+
 .page-wrapper {
   display: flex;
 
   padding: 80px 0;
 
   justify-content: space-between;
-}
-
-.task-wrapper {
-  align-self: flex-start;
-  padding: 20px 40px;
-
-  border-radius: 15px;
-
-  width: 1000px;
-
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.task-list {
-  overflow: auto;
-  max-height: 620px;
-}
-
-.task-title {
-  font-size: 44px;
-  text-align: center;
-  margin-bottom: 16px;
 }
 
 .btn {

@@ -81,7 +81,7 @@ export default {
         id: Date.now(),
         uid: this.uid,
         text: "",
-        categorie: this?.categories[0]?.id ?? null,
+        categorie: this?.categories[0]?.id || null,
       };
 
       this.$store.dispatch("addTask", newTask);
@@ -108,7 +108,7 @@ export default {
   align-self: flex-start;
   padding: 20px 40px;
 
-  border-radius: 12px;
+  border-radius: 15px;
 
   width: 1000px;
 

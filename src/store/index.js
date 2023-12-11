@@ -43,7 +43,7 @@ export default createStore({
   }),
 
   getters: {
-    filteredNotes(state) {
+    filteredTasks(state) {
       return state.board.notes.filter((el) => {
         if (state.checkedCategories.length > 0) {
           return state.checkedCategories.includes(el.categorie);

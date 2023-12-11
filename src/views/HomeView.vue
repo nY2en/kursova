@@ -1,19 +1,19 @@
 <template>
-  <div style="display: flex; padding: 40px">
+  <div class="home-area">
     <CategoriesFilter />
-    <NoteCard v-for="note in filteredNotes" :key="note.id" :note="note" />
 
+    <TaskList />
     <button class="btn" @click="addNote">Add note</button>
     <button class="btn" @click="signOut">Sign Out</button>
   </div>
 </template>
 
 <script>
-import NoteCard from "@/components/NoteCard.vue";
+import TaskList from "@/components/TaskList.vue";
 import CategoriesFilter from "@/components/CategoriesFilter.vue";
 
 export default {
-  components: { NoteCard, CategoriesFilter },
+  components: { TaskList, CategoriesFilter },
 
   created() {
     if (localStorage.getItem("uid") && localStorage.getItem("isLoggedIn")) {
@@ -42,10 +42,6 @@ export default {
     isLoggedIn() {
       return this.$store.getters.isLoggedIn;
     },
-
-    filteredNotes() {
-      return this.$store.getters.filteredNotes;
-    },
   },
 
   methods: {
@@ -68,6 +64,10 @@ export default {
 </script>
 
 <style scoped>
+.home-area {
+  display: flex;
+  padding: 80px;
+}
 .btn {
   align-self: center;
   padding: 10px 30px;

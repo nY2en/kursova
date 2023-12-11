@@ -1,0 +1,19 @@
+<template>
+  <ul>
+    <TaskListItem v-for="task in filteredTasks" :key="task.id" :note="task" />
+  </ul>
+</template>
+
+<script>
+import TaskListItem from "./TaskListItem.vue";
+
+export default {
+  components: { TaskListItem },
+
+  computed: {
+    filteredTasks() {
+      return this.$store.getters.filteredTasks;
+    },
+  },
+};
+</script>

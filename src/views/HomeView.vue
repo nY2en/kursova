@@ -1,15 +1,10 @@
 <template>
   <div style="display: flex; padding: 40px">
     <CategoriesFilter />
-    <NoteCard
-      v-for="(note, index) in filteredNotes"
-      :key="note.id"
-      :note="note"
-      :idx="index"
-    />
+    <NoteCard v-for="note in filteredNotes" :key="note.id" :note="note" />
 
-    <button class="btn btn--add" @click="addNote">Add note</button>
-    <button class="btn btn--signout" @click="signOut">Sign Out</button>
+    <button class="btn" @click="addNote">Add note</button>
+    <button class="btn" @click="signOut">Sign Out</button>
   </div>
 </template>
 
@@ -74,7 +69,7 @@ export default {
 
 <style scoped>
 .btn {
-  position: fixed;
+  align-self: center;
   padding: 10px 30px;
 
   font-family: Kalam, sans-serif;
@@ -93,15 +88,5 @@ export default {
 .btn:hover,
 .btn:focus {
   background: rgba(0, 0, 0, 0.5);
-}
-
-.btn--add {
-  top: 0;
-  right: 0;
-}
-
-.btn--signout {
-  top: 10%;
-  right: 0;
 }
 </style>

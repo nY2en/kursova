@@ -36,7 +36,7 @@ const AUTH = getAuth(APP);
 export default createStore({
   state: () => ({
     uid: null,
-    board: { notes: [] },
+    board: { tasks: [] },
     categories: [],
     checkedCategories: [],
     isLoggedIn: false,
@@ -44,11 +44,11 @@ export default createStore({
 
   getters: {
     filteredTasks(state) {
-      return state.board.notes.filter((el) => {
+      return state.board.tasks.filter((el) => {
         if (state.checkedCategories.length > 0) {
           return state.checkedCategories.includes(el.categorie);
         }
-        return state.board.notes;
+        return state.board.tasks;
       });
     },
 
@@ -93,22 +93,22 @@ export default createStore({
       state.board = data;
     },
 
-    addNotes(state, data) {
-      state.board.notes.push(data);
+    addTask(state, data) {
+      state.board.tasks.push(data);
     },
 
     setCategories(state, data) {
       state.categories.push(data);
     },
 
-    updateNote(state, data) {
-      const idx = state.board.notes.findIndex((el) => el.id === data.id);
-      state.board.notes.splice(idx, 1, data);
+    updateTask(state, data) {
+      const idx = state.board.tasks.findIndex((el) => el.id === data.id);
+      state.board.tasks.splice(idx, 1, data);
     },
 
-    deleteNote(state, data) {
-      const idx = state.board.notes.findIndex((el) => el.id === data.id);
-      state.board.notes.splice(idx, 1);
+    deleteTask(state, data) {
+      const idx = state.board.tasks.findIndex((el) => el.id === data.id);
+      state.board.tasks.splice(idx, 1);
     },
 
     checkCategorie(state, data) {
@@ -160,7 +160,7 @@ export default createStore({
         state.uid = null;
         state.isLoggedIn = null;
         state.categories = [];
-        state.board.notes = [];
+        state.board.tasks = [];
         localStorage.removeItem("uid");
         localStorage.removeItem("isLoggedIn");
 
@@ -175,10 +175,10 @@ export default createStore({
       );
     },
 
-    fetchNotes({ commit, state }) {
-      state.board.notes = [];
-      getDoc(doc(DB, "Boards", state.uid)).then((res) =>
-        commit("setBoard", res?.data())
+    fetchTasks({ commit, state }) {
+      state.board.tasks = [];
+      getDoc(doc(DB, "Boards", state.uid)).then(
+        (res) => commit("setBoard", res.data()) // res.?data()
       );
     },
 
@@ -186,18 +186,18 @@ export default createStore({
       commit("setDataFromLs", data);
     },
 
-    addNote({ commit, state }, data) {
-      commit("addNotes", data);
+    addTask({ commit, state }, data) {
+      commit("addTask", data);
       setDoc(doc(DB, "Boards", `${data.uid}`), state.board);
     },
 
-    updateNote({ commit, state }, data) {
-      commit("updateNote", data);
+    updateTask({ commit, state }, data) {
+      commit("updateTask", data);
       setDoc(doc(DB, "Boards", `${data.uid}`), state.board);
     },
 
-    deleteNote({ commit, state }, data) {
-      commit("deleteNote", data);
+    deleteTask({ commit, state }, data) {
+      commit("deleteTask", data);
       setDoc(doc(DB, "Boards", `${data.uid}`), state.board);
     },
 

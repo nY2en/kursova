@@ -1,6 +1,6 @@
 <template>
   <ul class="task-list">
-    <TaskListItem v-for="task in filteredTasks" :key="task.id" :note="task" />
+    <TaskListItem v-for="task in filteredTasks" :key="task.id" :task="task" />
   </ul>
 </template>
 

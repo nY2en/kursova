@@ -11,9 +11,11 @@
     </form>
 
     <div class="task-wrapper">
-      <h1 style="font-size: 44px; text-align: center">Tasks</h1>
-      <button class="btn" @click="addNote">Add note</button>
+      <h1 class="task-title">Tasks</h1>
+
       <TaskList />
+
+      <button class="btn" @click="addTask">Add note</button>
     </div>
 
     <!-- <button class="btn" @click="signOut">Sign Out</button> -->
@@ -42,7 +44,7 @@ export default {
       return;
     }
 
-    this.$store.dispatch("fetchNotes");
+    this.$store.dispatch("fetchTasks");
     this.$store.dispatch("fetchCategories");
   },
 
@@ -57,7 +59,7 @@ export default {
   },
 
   methods: {
-    addNote() {
+    addTask() {
       const newNote = {
         id: Date.now(),
         uid: this.uid,
@@ -65,7 +67,7 @@ export default {
         categorie: 1,
       };
 
-      this.$store.dispatch("addNote", newNote);
+      this.$store.dispatch("addTask", newNote);
     },
 
     signOut() {
@@ -98,7 +100,12 @@ export default {
 
 .task-list {
   overflow: auto;
-  max-height: 700px;
+  max-height: 620px;
+}
+
+.task-title {
+  font-size: 44px;
+  text-align: center;
 }
 
 .btn {

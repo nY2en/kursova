@@ -1,7 +1,7 @@
 <template>
   <li>
     <textarea
-      :value="note.text"
+      :value="task.text"
       @input="handleTextAreaChange"
       placeholder="Type sth..."
     ></textarea>
@@ -11,20 +11,20 @@
         v-for="categorie in categories"
         :key="categorie.id"
         :value="categorie.id"
-        :selected="categorie.id === note.categorie"
+        :selected="categorie.id === task.categorie"
       >
         {{ categorie.type }}
       </option>
     </select>
 
-    <button @click="deleteNote(note)">X</button>
+    <button @click="handleBtnDeleteClick(task)">X</button>
   </li>
 </template>
 
 <script>
 export default {
   props: {
-    note: {
+    task: {
       type: Object,
       required: true,
     },
@@ -38,19 +38,19 @@ export default {
 
   methods: {
     handleTextAreaChange(e) {
-      const noteToUpdate = { ...this.note, text: e.target.value };
+      const taskToUpdate = { ...this.task, text: e.target.value };
 
-      this.$store.dispatch("updateNote", noteToUpdate);
+      this.$store.dispatch("updateTask", taskToUpdate);
     },
 
     handleSelectChange(e) {
-      const noteToUpdate = { ...this.note, categorie: Number(e.target.value) };
+      const taskToUpdate = { ...this.task, categorie: Number(e.target.value) };
 
-      this.$store.dispatch("updateNote", noteToUpdate);
+      this.$store.dispatch("updateTask", taskToUpdate);
     },
 
-    deleteNote(data) {
-      this.$store.dispatch("deleteNote", data);
+    handleBtnDeleteClick(data) {
+      this.$store.dispatch("deleteTask", data);
     },
   },
 };

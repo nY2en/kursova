@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <li>
     <textarea
       :value="note.text"
       @input="handleTextAreaChange"
@@ -18,7 +18,7 @@
     </select>
 
     <button @click="deleteNote(note)">X</button>
-  </div>
+  </li>
 </template>
 
 <script>

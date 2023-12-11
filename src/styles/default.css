@@ -2,6 +2,16 @@
   display: none;
 }
 
+::-moz-selection {
+  color: #000;
+  background: teal;
+}
+
+::selection {
+  color: #000;
+  background: teal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

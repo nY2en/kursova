@@ -51,7 +51,7 @@
 
     <p class="form-main-link-wrapper">
       Already have an account?
-      <RouterLink class="form-main-link" to="/signin">Sign In</RouterLink>
+      <RouterLink class="form-main-link" to="/signin">Login</RouterLink>
     </p>
   </div>
 </template>

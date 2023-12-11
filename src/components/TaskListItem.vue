@@ -6,7 +6,7 @@
       placeholder="Type sth..."
     ></textarea>
 
-    <select @change="handleSelectChange">
+    <select @change="handleSelectChange" v-if="categories.length > 0">
       <option
         v-for="categorie in categories"
         :key="categorie.id"
@@ -44,7 +44,10 @@ export default {
     },
 
     handleSelectChange(e) {
-      const taskToUpdate = { ...this.task, categorie: Number(e.target.value) };
+      const taskToUpdate = {
+        ...this.task,
+        categorie: Number(e.target.value),
+      };
 
       this.$store.dispatch("updateTask", taskToUpdate);
     },

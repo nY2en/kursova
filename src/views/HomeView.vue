@@ -5,7 +5,11 @@
 
       <CategoriesList />
 
-      <button type="button" class="form-categories-add-categorie">
+      <button
+        type="button"
+        class="form-categories-add-categorie"
+        @click="addCategorie"
+      >
         Add Categorie
       </button>
     </form>
@@ -44,8 +48,7 @@ export default {
       return;
     }
 
-    this.$store.dispatch("fetchTasks");
-    this.$store.dispatch("fetchCategories");
+    this.$store.dispatch("fetchBoard");
   },
 
   computed: {
@@ -56,18 +59,32 @@ export default {
     isLoggedIn() {
       return this.$store.getters.isLoggedIn;
     },
+
+    categories() {
+      return this.$store.getters.categories;
+    },
   },
 
   methods: {
+    addCategorie() {
+      const newCategorie = {
+        id: Date.now(),
+        uid: this.uid,
+        type: "Personal",
+      };
+
+      this.$store.dispatch("addCategorie", newCategorie);
+    },
+
     addTask() {
-      const newNote = {
+      const newTask = {
         id: Date.now(),
         uid: this.uid,
         text: "",
-        categorie: 1,
+        categorie: this?.categories[0]?.id ?? null,
       };
 
-      this.$store.dispatch("addTask", newNote);
+      this.$store.dispatch("addTask", newTask);
     },
 
     signOut() {
@@ -106,14 +123,13 @@ export default {
 .task-title {
   font-size: 44px;
   text-align: center;
+  margin-bottom: 16px;
 }
 
 .btn {
   align-self: center;
   padding: 10px 30px;
   width: 100%;
-
-  margin-bottom: 16px;
 
   font-family: Kalam, sans-serif;
   font-size: 16px;

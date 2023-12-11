@@ -2,14 +2,7 @@ import { createStore } from "vuex";
 import router from "@/router";
 import { Notify } from "notiflix";
 import { initializeApp } from "firebase/app";
-import {
-  getDocs,
-  getDoc,
-  collection,
-  doc,
-  getFirestore,
-  setDoc,
-} from "firebase/firestore";
+import { getDoc, doc, getFirestore, setDoc } from "firebase/firestore";
 
 import {
   createUserWithEmailAndPassword,
@@ -36,8 +29,10 @@ const AUTH = getAuth(APP);
 export default createStore({
   state: () => ({
     uid: null,
-    board: { tasks: [] },
-    categories: [],
+    board: {
+      tasks: [],
+      categories: [],
+    },
     checkedCategories: [],
     isLoggedIn: false,
   }),
@@ -53,7 +48,7 @@ export default createStore({
     },
 
     categories(state) {
-      return state.categories;
+      return state.board.categories;
     },
 
     checkedCategories(state) {
@@ -97,10 +92,6 @@ export default createStore({
       state.board.tasks.push(data);
     },
 
-    setCategories(state, data) {
-      state.categories.push(data);
-    },
-
     updateTask(state, data) {
       const idx = state.board.tasks.findIndex((el) => el.id === data.id);
       state.board.tasks.splice(idx, 1, data);
@@ -109,6 +100,24 @@ export default createStore({
     deleteTask(state, data) {
       const idx = state.board.tasks.findIndex((el) => el.id === data.id);
       state.board.tasks.splice(idx, 1);
+    },
+
+    addCategorie(state, data) {
+      state.board.categories.push(data);
+
+      state.board.tasks.filter((el) => {
+        if (el.categorie === null) {
+          el.categorie = state.board.categories[0].id;
+        }
+
+        return el;
+      });
+      console.log(data);
+    },
+
+    deleteCategorie(state, data) {
+      const idx = state.board.categories.findIndex((el) => el.id === data.id);
+      state.board.categories.splice(idx, 1);
     },
 
     checkCategorie(state, data) {
@@ -133,8 +142,8 @@ export default createStore({
           router.push("/board");
         })
         .catch((error) => {
-          console.log(error);
           Notify.failure("This email is already in use");
+          console.log(error);
         });
     },
 
@@ -159,7 +168,6 @@ export default createStore({
       signOut(AUTH).then(() => {
         state.uid = null;
         state.isLoggedIn = null;
-        state.categories = [];
         state.board.tasks = [];
         localStorage.removeItem("uid");
         localStorage.removeItem("isLoggedIn");
@@ -168,14 +176,7 @@ export default createStore({
       });
     },
 
-    fetchCategories({ commit, state }) {
-      state.categories = [];
-      getDocs(collection(DB, "Categories")).then((res) =>
-        res.forEach((el) => commit("setCategories", el.data()))
-      );
-    },
-
-    fetchTasks({ commit, state }) {
+    fetchBoard({ commit, state }) {
       state.board.tasks = [];
       getDoc(doc(DB, "Boards", state.uid)).then(
         (res) => commit("setBoard", res.data()) // res.?data()
@@ -191,6 +192,11 @@ export default createStore({
       setDoc(doc(DB, "Boards", `${data.uid}`), state.board);
     },
 
+    addCategorie({ commit, state }, data) {
+      commit("addCategorie", data);
+      setDoc(doc(DB, "Boards", `${data.uid}`), state.board);
+    },
+
     updateTask({ commit, state }, data) {
       commit("updateTask", data);
       setDoc(doc(DB, "Boards", `${data.uid}`), state.board);
@@ -199,6 +205,20 @@ export default createStore({
     deleteTask({ commit, state }, data) {
       commit("deleteTask", data);
       setDoc(doc(DB, "Boards", `${data.uid}`), state.board);
+    },
+
+    deleteCategorie({ commit, state }, data) {
+      const index = state.board.tasks.findIndex(
+        (el) => el.categorie === data.id
+      );
+
+      if (index === -1) {
+        commit("deleteCategorie", data);
+        setDoc(doc(DB, "Boards", `${data.uid}`), state.board);
+        return;
+      }
+
+      alert("This categorie is used in tasks");
     },
 
     checkCategorie({ commit }, data) {

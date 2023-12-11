@@ -68,8 +68,9 @@
 .form-categories-add-categorie {
   display: block;
   margin: 0 auto;
-  padding: 8px 16px;
+  padding: 10px 16px;
 
+  font-size: 16px;
   font-family: Kalam, sans-serif;
 
   border: none;

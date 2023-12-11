@@ -20,7 +20,7 @@
 
     <button
       type="button"
-      @click="handleBtnDeleteClick(categorie.id)"
+      @click="handleBtnDeleteClick(categorie)"
       class="form-categories-delete-categorie"
     >
       <svg class="form-categories-icon">
@@ -52,8 +52,8 @@ export default {
       } else this.$store.dispatch("unCheckCategorie", Number(e.target.value));
     },
 
-    handleBtnDeleteClick(id) {
-      console.log(id);
+    handleBtnDeleteClick(data) {
+      this.$store.dispatch("deleteCategorie", data);
     },
   },
 };

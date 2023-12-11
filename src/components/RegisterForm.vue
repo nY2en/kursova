@@ -66,6 +66,4 @@ export default {
 };
 </script>
 
-<style>
-@import "../styles/form.css";
-</style>
+

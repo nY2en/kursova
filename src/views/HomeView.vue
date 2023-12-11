@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../styles/categories.css";
+@import "../styles/form-categories.css";
 .page-wrapper {
   display: flex;
   padding: 80px;

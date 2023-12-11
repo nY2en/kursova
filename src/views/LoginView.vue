@@ -9,3 +9,7 @@ export default {
   components: { LoginForm },
 };
 </script>
+
+<style>
+@import "../styles/form-main.css";
+</style>

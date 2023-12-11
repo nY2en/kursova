@@ -112,7 +112,6 @@ export default createStore({
 
         return el;
       });
-      console.log(data);
     },
 
     deleteCategorie(state, data) {
@@ -218,7 +217,7 @@ export default createStore({
         return;
       }
 
-      alert("This categorie is used in tasks");
+      Notify.failure("This categorie is beind used in tasks");
     },
 
     checkCategorie({ commit }, data) {

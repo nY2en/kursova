@@ -7,7 +7,6 @@
 
   text-align: center;
 
-  border-radius: 25px;
   border-radius: 15px;
 
   background-color: rgba(255, 255, 255, 0.2);
@@ -93,7 +92,10 @@ button.formkit-input {
   font-family: Kalam, sans-serif;
   font-size: 16px !important;
 
+  border-radius: 12px !important;
+
   background: rgba(0, 0, 0, 0.3) !important;
+  color: #fff !important;
 
   transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }

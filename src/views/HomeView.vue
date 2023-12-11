@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="display: flex; padding: 40px">
     <CategoriesFilter />
     <NoteCard
       v-for="(note, index) in filteredNotes"
@@ -8,8 +8,8 @@
       :idx="index"
     />
 
-    <button class="btn bottom" @click="addNote">Add note</button>
-    <button class="btn top" @click="signOut">Sign Out</button>
+    <button class="btn btn--add" @click="addNote">Add note</button>
+    <button class="btn btn--signout" @click="signOut">Sign Out</button>
   </div>
 </template>
 
@@ -18,6 +18,8 @@ import NoteCard from "@/components/NoteCard.vue";
 import CategoriesFilter from "@/components/CategoriesFilter.vue";
 
 export default {
+  components: { NoteCard, CategoriesFilter },
+
   created() {
     if (localStorage.getItem("uid") && localStorage.getItem("isLoggedIn")) {
       const data = {
@@ -36,8 +38,6 @@ export default {
     this.$store.dispatch("fetchNotes");
     this.$store.dispatch("fetchCategories");
   },
-
-  components: { NoteCard, CategoriesFilter },
 
   computed: {
     uid() {
@@ -75,35 +75,33 @@ export default {
 <style scoped>
 .btn {
   position: fixed;
+  padding: 10px 30px;
 
-  padding: 12px;
-
+  font-family: Kalam, sans-serif;
   font-size: 16px;
-  font-weight: 700;
 
-  cursor: pointer;
-
-  border-radius: 12px;
+  outline: none;
   border: none;
+  border-radius: 12px;
 
-  background-color: #fa8072;
+  background: rgba(0, 0, 0, 0.3);
   color: #fff;
 
-  transition: transform 250ms linear;
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-  }
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.top {
-  top: 1%;
-  right: 1%;
+.btn:hover,
+.btn:focus {
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.bottom {
-  bottom: 1%;
-  right: 1%;
+.btn--add {
+  top: 0;
+  right: 0;
+}
+
+.btn--signout {
+  top: 10%;
+  right: 0;
 }
 </style>

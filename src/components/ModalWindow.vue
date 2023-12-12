@@ -54,6 +54,8 @@ export default {
           id: Date.now(),
           uid: this.uid,
           type: text,
+          created: "",
+          closed: null,
         };
 
         this.$store.dispatch("addCategorie", newCategorie);

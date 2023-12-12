@@ -106,27 +106,4 @@ export default {
 
   justify-content: space-between;
 }
-
-.task-add-btn {
-  align-self: center;
-  padding: 10px 30px;
-  width: 100%;
-
-  font-family: Kalam, sans-serif;
-  font-size: 16px;
-
-  outline: none;
-  border: none;
-  border-radius: 12px;
-
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.task-add-btn:hover,
-.task-add-btn:focus {
-  background: rgba(0, 0, 0, 0.5);
-}
 </style>

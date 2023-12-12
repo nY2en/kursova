@@ -24,17 +24,17 @@
 
     <!-- <button class="btn" @click="signOut">Sign Out</button> -->
 
-    <ModalWindow v-if="isModalOpen" />
+    <ModalCategoriesVue v-if="isModalOpen" />
   </div>
 </template>
 
 <script>
 import TaskList from "@/components/TaskList.vue";
 import CategoriesList from "@/components/CategoriesList.vue";
-import ModalWindow from "@/components/ModalWindow.vue";
+import ModalCategoriesVue from "@/components/ModalCategories.vue";
 
 export default {
-  components: { TaskList, CategoriesList, ModalWindow },
+  components: { TaskList, CategoriesList, ModalCategoriesVue },
 
   created() {
     if (localStorage.getItem("uid") && localStorage.getItem("isLoggedIn")) {

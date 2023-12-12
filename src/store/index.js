@@ -40,12 +40,14 @@ export default createStore({
 
   getters: {
     filteredTasks(state) {
-      return state.board.tasks.filter((el) => {
-        if (state.checkedCategories.length > 0) {
-          return state.checkedCategories.includes(el.categorie);
-        }
-        return state.board.tasks;
-      });
+      return state.board.tasks
+        .filter((el) => {
+          if (state.checkedCategories.length > 0) {
+            return state.checkedCategories.includes(el.categorie);
+          }
+          return state.board.tasks;
+        })
+        .sort((a, b) => b?.closed?.localeCompare(a?.closed));
     },
 
     categories(state) {

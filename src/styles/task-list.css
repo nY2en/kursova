@@ -23,6 +23,7 @@
 }
 
 .task-item {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +40,7 @@
 
 .task-textarea {
   resize: none;
-  width: 650px;
+  width: 600px;
   height: 30px;
   padding: 4px 12px;
 
@@ -57,6 +58,42 @@
 
 .task-created {
   font-size: 12px;
+
+  color: #000;
+}
+
+.task-completed-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 15px;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.task-completed {
+  position: absolute;
+  top: 50%;
+
+  width: 96%;
+  transform-origin: -100%;
+  height: 4px;
+  background-color: teal;
+
+  animation: main 3s;
+}
+
+@keyframes main {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .task-select {
@@ -82,6 +119,10 @@
 .task-btn:hover .task-icon,
 .task-btn:focus .task-icon {
   fill: rgba(0, 0, 0, 0.8);
+}
+
+.task-btn.del {
+  z-index: 999;
 }
 
 .task-icon {

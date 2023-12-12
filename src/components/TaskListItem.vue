@@ -1,5 +1,8 @@
 <template>
   <li class="task-item">
+    <div :class="task.closed ? 'task-completed-wrapper' : ''">
+      <div :class="task.closed ? 'task-completed' : ''"></div>
+    </div>
     <div>
       <p class="task-created">created: {{ task.created }}</p>
       <p class="task-created">closed: {{ task.closed ? task.closed : "" }}</p>
@@ -26,13 +29,13 @@
       </option>
     </select>
 
-    <button @click="hadnleBtnCloseClick(task)" class="task-btn">
+    <button @click="hadnleBtnCloseClick(task)" class="task-btn ">
       <svg class="task-icon">
         <use href="../assets/symbol-defs.svg#icon-bin"></use>
       </svg>
     </button>
 
-    <button @click="handleBtnDeleteClick(task)" class="task-btn">
+    <button @click="handleBtnDeleteClick(task)" class="task-btn del">
       <svg class="task-icon">
         <use href="../assets/symbol-defs.svg#icon-bin"></use>
       </svg>
@@ -76,25 +79,27 @@ export default {
     },
 
     hadnleBtnCloseClick() {
-      const d = new Date();
+      if (!this.task.closed) {
+        const d = new Date();
 
-      const datestring =
-        ("0" + d.getDate()).slice(-2) +
-        "-" +
-        ("0" + (d.getMonth() + 1)).slice(-2) +
-        "-" +
-        d.getFullYear() +
-        " " +
-        ("0" + d.getHours()).slice(-2) +
-        ":" +
-        ("0" + d.getMinutes()).slice(-2);
+        const datestring =
+          ("0" + d.getDate()).slice(-2) +
+          "-" +
+          ("0" + (d.getMonth() + 1)).slice(-2) +
+          "-" +
+          d.getFullYear() +
+          " " +
+          ("0" + d.getHours()).slice(-2) +
+          ":" +
+          ("0" + d.getMinutes()).slice(-2);
 
-      const taskToUpdate = {
-        ...this.task,
-        closed: datestring,
-      };
+        const taskToUpdate = {
+          ...this.task,
+          closed: datestring,
+        };
 
-      this.$store.dispatch("updateTask", taskToUpdate);
+        this.$store.dispatch("updateTask", taskToUpdate);
+      }
     },
   },
 };

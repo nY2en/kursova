@@ -25,6 +25,7 @@
 .task-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 8px 16px;
 
   border-radius: 15px;
@@ -38,7 +39,7 @@
 
 .task-textarea {
   resize: none;
-  width: 700px;
+  width: 650px;
   height: 30px;
   padding: 4px 12px;
 
@@ -52,6 +53,10 @@
 
 .task-textarea::placeholder {
   font-family: Kalam, sans-serif;
+}
+
+.task-created {
+  font-size: 12px;
 }
 
 .task-select {

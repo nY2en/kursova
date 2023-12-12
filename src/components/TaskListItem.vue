@@ -1,5 +1,9 @@
 <template>
   <li class="task-item">
+    <div>
+      <p class="task-created">created: {{ task.created }}</p>
+      <p class="task-created">closed: {{ task.closed ? task.closed : "" }}</p>
+    </div>
     <textarea
       class="task-textarea"
       :value="task.text"
@@ -21,6 +25,12 @@
         {{ categorie.type }}
       </option>
     </select>
+
+    <button @click="hadnleBtnCloseClick(task)" class="task-btn">
+      <svg class="task-icon">
+        <use href="../assets/symbol-defs.svg#icon-bin"></use>
+      </svg>
+    </button>
 
     <button @click="handleBtnDeleteClick(task)" class="task-btn">
       <svg class="task-icon">
@@ -63,6 +73,28 @@ export default {
 
     handleBtnDeleteClick(data) {
       this.$store.dispatch("deleteTask", data);
+    },
+
+    hadnleBtnCloseClick() {
+      const d = new Date();
+
+      const datestring =
+        ("0" + d.getDate()).slice(-2) +
+        "-" +
+        ("0" + (d.getMonth() + 1)).slice(-2) +
+        "-" +
+        d.getFullYear() +
+        " " +
+        ("0" + d.getHours()).slice(-2) +
+        ":" +
+        ("0" + d.getMinutes()).slice(-2);
+
+      const taskToUpdate = {
+        ...this.task,
+        closed: datestring,
+      };
+
+      this.$store.dispatch("updateTask", taskToUpdate);
     },
   },
 };

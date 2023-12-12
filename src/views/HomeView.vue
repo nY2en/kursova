@@ -78,11 +78,26 @@ export default {
     },
 
     addTask() {
+      const d = new Date();
+
+      const datestring =
+        ("0" + d.getDate()).slice(-2) +
+        "-" +
+        ("0" + (d.getMonth() + 1)).slice(-2) +
+        "-" +
+        d.getFullYear() +
+        " " +
+        ("0" + d.getHours()).slice(-2) +
+        ":" +
+        ("0" + d.getMinutes()).slice(-2);
+
       const newTask = {
         id: Date.now(),
         uid: this.uid,
         text: "",
         categorie: this?.categories[0]?.id || null,
+        created: datestring,
+        closed: null,
       };
 
       this.$store.dispatch("addTask", newTask);

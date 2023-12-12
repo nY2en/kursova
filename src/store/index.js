@@ -36,6 +36,7 @@ export default createStore({
     checkedCategories: [],
     isLoggedIn: false,
     isModalOpen: false,
+    email: "",
   }),
 
   getters: {
@@ -69,6 +70,10 @@ export default createStore({
     isModalOpen(state) {
       return state.isModalOpen;
     },
+
+    email(state) {
+      return state.email;
+    },
   },
 
   mutations: {
@@ -80,11 +85,16 @@ export default createStore({
       state.isLoggedIn = data;
     },
 
+    setEmail(state, data) {
+      state.email = data;
+    },
+
     setDataFromLs(state, data) {
-      const { uid, isLoggedIn } = data;
+      const { uid, isLoggedIn, email } = data;
 
       state.uid = uid;
       state.isLoggedIn = isLoggedIn;
+      state.email = email;
     },
 
     setBoard(state, data) {
@@ -146,8 +156,10 @@ export default createStore({
         .then((data) => {
           commit("setUid", data.user.uid);
           commit("setIsLoggedIn", true);
+          commit("setEmail", data.user.email);
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("uid", data.user.uid);
+          localStorage.setItem("email", data.user.email);
 
           router.push("/board");
         })
@@ -162,9 +174,11 @@ export default createStore({
         .then((data) => {
           commit("setUid", data.user.uid);
           commit("setIsLoggedIn", true);
+          commit("setEmail", data.user.email);
 
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("uid", data.user.uid);
+          localStorage.setItem("email", data.user.email);
 
           router.push("/board");
         })
@@ -178,9 +192,13 @@ export default createStore({
       signOut(AUTH).then(() => {
         state.uid = null;
         state.isLoggedIn = null;
+        state.email = "";
         state.board.tasks = [];
+        state.checkedCategories = [];
+        state.isModalOpen = false;
         localStorage.removeItem("uid");
         localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("email");
 
         router.push("/signin");
       });
@@ -188,6 +206,7 @@ export default createStore({
 
     fetchBoard({ commit, state }) {
       state.board.tasks = [];
+      state.board.categories = [];
       getDoc(doc(DB, "Boards", state.uid)).then(
         (res) => commit("setBoard", res.data()) // res.?data()
       );

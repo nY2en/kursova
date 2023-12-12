@@ -84,7 +84,7 @@
   height: 4px;
   background-color: teal;
 
-  animation: main 3s;
+  animation: main 1s;
 }
 
 @keyframes main {
@@ -113,6 +113,8 @@
 
   border: none;
 
+  cursor: pointer;
+
   background-color: transparent;
 }
 
@@ -134,10 +136,9 @@
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.task-add-btn {
+.task-add-signout-btn {
   align-self: center;
   padding: 10px 30px;
-  width: 100%;
 
   font-family: Kalam, sans-serif;
   font-size: 16px;
@@ -146,13 +147,19 @@
   border: none;
   border-radius: 12px;
 
+  cursor: pointer;
+
   background: rgba(0, 0, 0, 0.3);
   color: #fff;
 
   transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.task-add-btn:hover,
-.task-add-btn:focus {
+.width {
+  width: 100%;
+}
+
+.task-add-signout-btn:hover,
+.task-add-signout-btn:focus {
   background: rgba(0, 0, 0, 0.5);
 }

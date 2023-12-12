@@ -1,30 +1,37 @@
 <template>
   <div class="page-wrapper">
-    <form class="form-categories">
-      <h1 class="form-categories-title">Categories</h1>
-
-      <CategoriesList />
-
-      <button
-        type="button"
-        class="form-categories-add-categorie"
-        @click="handleModalOpen"
-      >
-        Add Categorie
-      </button>
-    </form>
-
-    <div class="task-wrapper">
-      <h1 class="task-title">Tasks</h1>
-
-      <TaskList />
-
-      <button class="task-add-btn" @click="addTask">Add task</button>
+    <div class="signout-btn-wrapper">
+      <p class="email">{{ email }}</p>
+      <button class="task-add-signout-btn" @click="signOut">Sign Out</button>
     </div>
 
-    <!-- <button class="btn" @click="signOut">Sign Out</button> -->
+    <div class="page-content-wrapper">
+      <form class="form-categories">
+        <h1 class="form-categories-title">Categories</h1>
 
-    <ModalCategoriesVue v-if="isModalOpen" />
+        <CategoriesList />
+
+        <button
+          type="button"
+          class="form-categories-add-categorie"
+          @click="handleModalOpen"
+        >
+          Add Categorie
+        </button>
+      </form>
+
+      <div class="task-wrapper">
+        <h1 class="task-title">Tasks</h1>
+
+        <TaskList />
+
+        <button class="task-add-signout-btn width" @click="addTask">
+          Add task
+        </button>
+      </div>
+
+      <ModalCategoriesVue v-if="isModalOpen" />
+    </div>
   </div>
 </template>
 
@@ -41,6 +48,7 @@ export default {
       const data = {
         uid: localStorage.getItem("uid"),
         isLoggedIn: localStorage.getItem("isLoggedIn"),
+        email: localStorage.getItem("email"),
       };
 
       this.$store.dispatch("setDataFromLs", data);
@@ -61,6 +69,10 @@ export default {
 
     isLoggedIn() {
       return this.$store.getters.isLoggedIn;
+    },
+
+    email() {
+      return this.$store.getters.email;
     },
 
     categories() {
@@ -115,10 +127,23 @@ export default {
 @import "../styles/task-list.css";
 
 .page-wrapper {
-  display: flex;
-
   padding: 80px 0;
+}
 
+.page-content-wrapper {
+  display: flex;
   justify-content: space-between;
+}
+
+.email {
+  margin-right: 16px;
+}
+
+.signout-btn-wrapper {
+  text-align: end;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 </style>

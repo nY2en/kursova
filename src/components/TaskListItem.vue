@@ -29,9 +29,9 @@
       </option>
     </select>
 
-    <button @click="hadnleBtnCloseClick(task)" class="task-btn ">
+    <button @click="handleBtnCompleteClick(task)" class="task-btn">
       <svg class="task-icon">
-        <use href="../assets/symbol-defs.svg#icon-bin"></use>
+        <use href="../assets/symbol-defs.svg#icon-complete"></use>
       </svg>
     </button>
 
@@ -78,7 +78,7 @@ export default {
       this.$store.dispatch("deleteTask", data);
     },
 
-    hadnleBtnCloseClick() {
+    handleBtnCompleteClick() {
       if (!this.task.closed) {
         const d = new Date();
 

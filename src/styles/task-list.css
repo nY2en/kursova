@@ -16,7 +16,7 @@
 }
 
 .task-list {
-  max-height: 620px;
+  max-height: 600px;
   margin-bottom: 16px;
 
   overflow: auto;
@@ -48,6 +48,10 @@
   outline: none;
 
   background-color: transparent;
+}
+
+.task-textarea::placeholder {
+  font-family: Kalam, sans-serif;
 }
 
 .task-select {

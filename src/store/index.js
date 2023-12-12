@@ -35,6 +35,7 @@ export default createStore({
     },
     checkedCategories: [],
     isLoggedIn: false,
+    isModalOpen: false,
   }),
 
   getters: {
@@ -61,6 +62,10 @@ export default createStore({
 
     uid(state) {
       return state.uid;
+    },
+
+    isModalOpen(state) {
+      return state.isModalOpen;
     },
   },
 
@@ -126,6 +131,10 @@ export default createStore({
     unCheckCategorie(state, data) {
       const idx = state.checkedCategories.indexOf(data);
       state.checkedCategories.splice(idx, 1);
+    },
+
+    toggleModal(state) {
+      state.isModalOpen = !state.isModalOpen;
     },
   },
 
@@ -226,6 +235,10 @@ export default createStore({
 
     unCheckCategorie({ commit }, data) {
       commit("unCheckCategorie", data);
+    },
+
+    toggleModal({ commit }) {
+      commit("toggleModal");
     },
   },
 });

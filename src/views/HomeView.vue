@@ -8,7 +8,7 @@
       <button
         type="button"
         class="form-categories-add-categorie"
-        @click="addCategorie"
+        @click="handleModalOpen"
       >
         Add Categorie
       </button>
@@ -19,19 +19,22 @@
 
       <TaskList />
 
-      <button class="btn" @click="addTask">Add note</button>
+      <button class="task-add-btn" @click="addTask">Add task</button>
     </div>
 
     <!-- <button class="btn" @click="signOut">Sign Out</button> -->
+
+    <ModalWindow v-if="isModalOpen" />
   </div>
 </template>
 
 <script>
 import TaskList from "@/components/TaskList.vue";
 import CategoriesList from "@/components/CategoriesList.vue";
+import ModalWindow from "@/components/ModalWindow.vue";
 
 export default {
-  components: { TaskList, CategoriesList },
+  components: { TaskList, CategoriesList, ModalWindow },
 
   created() {
     if (localStorage.getItem("uid") && localStorage.getItem("isLoggedIn")) {
@@ -63,17 +66,15 @@ export default {
     categories() {
       return this.$store.getters.categories;
     },
+
+    isModalOpen() {
+      return this.$store.getters.isModalOpen;
+    },
   },
 
   methods: {
-    addCategorie() {
-      const newCategorie = {
-        id: Date.now(),
-        uid: this.uid,
-        type: "Personal",
-      };
-
-      this.$store.dispatch("addCategorie", newCategorie);
+    handleModalOpen() {
+      this.$store.dispatch("toggleModal");
     },
 
     addTask() {
@@ -106,7 +107,7 @@ export default {
   justify-content: space-between;
 }
 
-.btn {
+.task-add-btn {
   align-self: center;
   padding: 10px 30px;
   width: 100%;
@@ -124,8 +125,8 @@ export default {
   transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn:hover,
-.btn:focus {
+.task-add-btn:hover,
+.task-add-btn:focus {
   background: rgba(0, 0, 0, 0.5);
 }
 </style>

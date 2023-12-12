@@ -9,14 +9,16 @@
 }
 
 .form-categories-title {
+  margin-bottom: 16px;
+
   font-size: 44px;
   text-align: center;
 }
 
 .form-categories-list {
+  max-height: 600px;
   margin-bottom: 16px;
 
-  max-height: 620px;
   overflow: auto;
 }
 

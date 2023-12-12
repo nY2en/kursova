@@ -194,6 +194,7 @@ export default createStore({
         state.isLoggedIn = null;
         state.email = "";
         state.board.tasks = [];
+        state.board.categories = [];
         state.checkedCategories = [];
         state.isModalOpen = false;
         localStorage.removeItem("uid");
